@@ -1,0 +1,16 @@
+{
+  "name": "rct",
+  "version": "0.1.0",
+  "description": "Recently closed tabs",
+  "license": "MIT",
+  "author": "xDMPx",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+      "build": "npx tsc && cp ./manifest.json ./dist/manifest.json && cp ./src/index.html ./dist/"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.12",
+    "typescript": "^5.9.2"
+  }
+}
