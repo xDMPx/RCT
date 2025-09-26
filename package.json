@@ -7,7 +7,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-      "build": "npx tsc && cp ./manifest.json ./dist/manifest.json && cp ./src/index.html ./dist/"
+      "build": "npx tsc"
   },
   "devDependencies": {
     "@types/chrome": "^0.1.12",
