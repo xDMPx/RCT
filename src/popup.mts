@@ -1,8 +1,9 @@
-import { getRctState } from "./utils.mjs";
+import { getRctState, setRctState } from "./utils.mjs";
 
 async function main() {
     const state = await getRctState();
     const rct_div = document.getElementById("rctDiv");
+    const rct_button = document.getElementById("rctButton");
 
     if (rct_div !== null) {
         const list = document.createElement("ol");
@@ -13,7 +14,14 @@ async function main() {
         }
         rct_div.appendChild(list);
     }
+    if (rct_button !== null) {
+        rct_button.onclick = async () => {
+            const state = await getRctState();
+            state.removedTabs = [];
+            await setRctState(state);
+            location.reload();
+        }
+    }
 }
-
 
 main();
