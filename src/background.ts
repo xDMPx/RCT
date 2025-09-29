@@ -16,7 +16,7 @@ chrome.tabs.onRemoved.addListener(async (tabId: number) => {
 chrome.tabs.onUpdated.addListener(async (tabId: number, updateinfo: chrome.tabs.OnUpdatedInfo, tab: chrome.tabs.Tab) => {
     if (updateinfo.status == chrome.tabs.TabStatus.COMPLETE) {
         const state = await getRctState();
-        state.tabs.set(tabId, { url: tab.url, favicon: tab.favIconUrl });
+        state.tabs.set(tabId, { url: tab.url, favicon: tab.favIconUrl, title: tab.title });
         setRctState(state);
         chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
     } else if (updateinfo.favIconUrl !== undefined) {

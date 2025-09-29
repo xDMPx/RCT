@@ -9,7 +9,10 @@ async function main() {
         const list = document.createElement("ol");
         for (const tab of state.removedTabs) {
             const list_item = document.createElement("li");
-            list_item.innerText = (tab.url !== undefined ? tab.url : "");
+            const a = document.createElement("a");
+            a.innerText = (tab.title !== undefined ? tab.title : "");
+            a.href = (tab.url !== undefined ? tab.url : "");
+            list_item.appendChild(a);
             list.appendChild(list_item);
         }
         rct_div.appendChild(list);

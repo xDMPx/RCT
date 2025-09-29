@@ -6,7 +6,8 @@ export interface RctState {
 
 interface TabInfo {
     url: string | undefined,
-    favicon: string | undefined
+    favicon: string | undefined,
+    title: string | undefined
 }
 
 
