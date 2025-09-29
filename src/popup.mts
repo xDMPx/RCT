@@ -19,6 +19,7 @@ async function main() {
             const state = await getRctState();
             state.removedTabs = [];
             await setRctState(state);
+            chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
             location.reload();
         }
     }
