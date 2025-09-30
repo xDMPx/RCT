@@ -1,16 +1,20 @@
-import { RctState } from "./interfaces.mjs";
+import { LocalRctState, RctState } from "./interfaces.mjs";
 
 export async function getRctState(): Promise<RctState> {
-    let { state } = await chrome.storage.local.get("state") as { [key: string]: RctState | undefined };
-    if (state == undefined) {
-        state = {
-            removedTabs: [],
-            removedTabsArrayMaxSize: 25,
-            tabs: new Map()
+    let rct_state: RctState = {
+        removedTabs: [],
+        removedTabsArrayMaxSize: 25,
+        tabs: new Map()
+    };
+    const { state } = await chrome.storage.local.get("state") as { [key: string]: LocalRctState | undefined };
+    if (state !== undefined) {
+        rct_state = {
+            removedTabs: state.removedTabs,
+            removedTabsArrayMaxSize: state.removedTabsArrayMaxSize,
+            tabs: new Map(state.tabs),
         }
     }
-
-    return state;
+    return rct_state;
 }
 
 export async function clearRctState() {
@@ -18,5 +22,11 @@ export async function clearRctState() {
 }
 
 export async function setRctState(state: RctState) {
-    await chrome.storage.local.set({ state: state });
+    const tabs = [...state.tabs];
+    const local_state: LocalRctState = {
+        removedTabs: state.removedTabs,
+        removedTabsArrayMaxSize: state.removedTabsArrayMaxSize,
+        tabs: tabs
+    };
+    await chrome.storage.local.set({ state: local_state });
 }

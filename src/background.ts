@@ -21,7 +21,10 @@ chrome.tabs.onUpdated.addListener(async (tabId: number, updateinfo: chrome.tabs.
         chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
     } else if (updateinfo.favIconUrl !== undefined) {
         const state = await getRctState();
-        state.tabs.get(tabId)!.favicon = updateinfo.favIconUrl
+
+        const st = state.tabs.get(tabId);
+        st!.favicon = updateinfo.favIconUrl;
+
         setRctState(state);
         chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
     }
