@@ -12,6 +12,9 @@ async function main() {
             const a = document.createElement("a");
             a.innerText = (tab.title !== undefined ? tab.title : "");
             a.href = (tab.url !== undefined ? tab.url : "");
+            const img = document.createElement("img");
+            img.src = (tab.favicon !== undefined ? tab.favicon : "");
+            list_item.appendChild(img);
             list_item.appendChild(a);
             list.appendChild(list_item);
         }
