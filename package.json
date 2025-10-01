@@ -12,5 +12,10 @@
   "devDependencies": {
     "@types/chrome": "^0.1.12",
     "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.13",
+    "daisyui": "^5.1.23",
+    "tailwindcss": "^4.1.13"
   }
 }
