@@ -7,15 +7,21 @@ async function main() {
 
     if (rct_div !== null) {
         const list = document.createElement("ol");
+        list.className = "list-decimal list-outside";
         for (const tab of state.removedTabs) {
             const list_item = document.createElement("li");
+            const div = document.createElement("div");
             const a = document.createElement("a");
+            div.className = "flex text-wrap";
             a.innerText = (tab.title !== undefined ? tab.title : "");
             a.href = (tab.url !== undefined ? tab.url : "");
+            a.className = "pl-2";
             const img = document.createElement("img");
+            img.className = "my-auto";
             img.src = (tab.favicon !== undefined ? tab.favicon : "");
-            list_item.appendChild(img);
-            list_item.appendChild(a);
+            div.appendChild(img);
+            div.appendChild(a);
+            list_item.appendChild(div);
             list.appendChild(list_item);
         }
         rct_div.appendChild(list);
