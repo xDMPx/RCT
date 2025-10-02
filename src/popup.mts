@@ -12,7 +12,7 @@ async function main() {
             const list_item = document.createElement("li");
             const div = document.createElement("div");
             const a = document.createElement("a");
-            div.className = "pl-1 flex text-wrap w-lg";
+            div.className = "pl-1 inline-flex text-wrap w-lg";
             a.innerText = (tab.title !== undefined ? tab.title : "");
             a.href = (tab.url !== undefined ? tab.url : "");
             a.className = "pl-2";
