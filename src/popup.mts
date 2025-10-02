@@ -7,12 +7,12 @@ async function main() {
 
     if (rct_div !== null) {
         const list = document.createElement("ol");
-        list.className = "list-decimal list-outside";
+        list.className = "list-decimal list-inside";
         for (const tab of state.removedTabs) {
             const list_item = document.createElement("li");
             const div = document.createElement("div");
             const a = document.createElement("a");
-            div.className = "flex text-wrap";
+            div.className = "pl-1 flex text-wrap w-lg";
             a.innerText = (tab.title !== undefined ? tab.title : "");
             a.href = (tab.url !== undefined ? tab.url : "");
             a.className = "pl-2";
