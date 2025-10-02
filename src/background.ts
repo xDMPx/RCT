@@ -14,20 +14,18 @@ chrome.tabs.onRemoved.addListener(async (tabId: number) => {
 })
 
 chrome.tabs.onUpdated.addListener(async (tabId: number, updateinfo: chrome.tabs.OnUpdatedInfo, tab: chrome.tabs.Tab) => {
-    if (updateinfo.status == chrome.tabs.TabStatus.COMPLETE) {
-        const state = await getRctState();
+    const state = await getRctState();
+    if (updateinfo.url !== undefined) {
         state.tabs.set(tabId, { url: tab.url, favicon: tab.favIconUrl, title: tab.title });
         setRctState(state);
-        chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
-    } else if (updateinfo.favIconUrl !== undefined) {
-        const state = await getRctState();
-
-        const saved_tab = state.tabs.get(tabId);
-        if (saved_tab !== undefined) {
-            saved_tab.favicon = updateinfo.favIconUrl;
-        }
-
-        setRctState(state);
-        chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
     }
+    if (updateinfo.title !== updateinfo) {
+        state.tabs.set(tabId, { url: tab.url, favicon: tab.favIconUrl, title: tab.title });
+        setRctState(state);
+    }
+    if (updateinfo.favIconUrl !== undefined) {
+        state.tabs.set(tabId, { url: tab.url, favicon: tab.favIconUrl, title: tab.title });
+        setRctState(state);
+    }
+    chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
 })
