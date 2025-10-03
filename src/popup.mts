@@ -1,4 +1,4 @@
-import { getRctState, setRctState } from "./utils.mjs";
+import { getRctState, setRctStateRemovedTabs } from "./utils.mjs";
 
 async function main() {
     const state = await getRctState();
@@ -30,7 +30,7 @@ async function main() {
         rct_button.onclick = async () => {
             const state = await getRctState();
             state.removedTabs = [];
-            await setRctState(state);
+            await setRctStateRemovedTabs(state);
             chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
             location.reload();
         }
