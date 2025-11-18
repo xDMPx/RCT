@@ -1,4 +1,4 @@
-import { getRctState, setRctStateRemovedTabs } from "./utils.mjs";
+import { getRctStateRemovedTabs, setRctStateRemovedTabs } from "./utils.mjs";
 
 async function main() {
     const rct_button = document.getElementById("rctButton");
@@ -7,7 +7,7 @@ async function main() {
 
     if (rct_button !== null) {
         rct_button.onclick = async () => {
-            const state = await getRctState();
+            const state = await getRctStateRemovedTabs();
             state.removedTabs = [];
             await setRctStateRemovedTabs(state);
             chrome.action.setBadgeText({ text: `${state.removedTabs.length}` });
@@ -18,7 +18,7 @@ async function main() {
 }
 
 async function createRecentlyClosedTabsList() {
-    const state = await getRctState();
+    const state = await getRctStateRemovedTabs();
     const rct_div = document.getElementById("rctDiv")!;
 
     const list = document.createElement("ol");

@@ -1,7 +1,6 @@
-export interface RctState {
+export interface RctStateRemovedTabs {
     removedTabs: TabInfo[],
     removedTabsArrayMaxSize: number,
-    tabs: Map<number, TabInfo>,
 }
 
 export interface TabInfo {
