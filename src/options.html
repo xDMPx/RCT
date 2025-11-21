@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Recently Closed Tabs Settings</title>
+</head>
+
+<body>
+    <div class="w-full h-full table p-2">
+        <div class="form-control">
+            <form id="submit-removed_tabs_array_max_size-form">
+                <label class="label cursor-pointer mr-auto">
+                    <span class="label-text pr-2">Maximum number of closed tabs to retain:</span>
+                    <input id="removed_tabs_array_max_size_input" type="number" class="input validator" required
+                        placeholder="Type a number between 25 to 200" min="25" max="200"
+                        title="Must be between be 25 to 200" />
+                    <p class="validator-hint">Must be between 25 to 200</p>
+                </label>
+            </form>
+        </div>
+    </div>
+</body>
+
+<script type="module" src="options.mjs"></script>
+
+</html>

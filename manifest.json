@@ -11,6 +11,9 @@
     "action": {
         "default_popup": "index.html"
     },
+    "options_ui": {
+        "page": "options.html"
+    },
     "permissions": [
         "tabs",
         "storage"

@@ -28,7 +28,7 @@ export async function setRctStateRemovedTabs(state: RctStateRemovedTabs) {
 }
 
 export async function setRctStateRemovedTabsArrayMaxSize(state: RctStateRemovedTabs) {
-    await chrome.storage.local.set({ "state:removedTabsArrayMaxSize": state.removedTabs });
+    await chrome.storage.local.set({ "state:removedTabsArrayMaxSize": state.removedTabsArrayMaxSize });
 }
 
 export async function setRctStateTab(tabid: number, tab: TabInfo) {
